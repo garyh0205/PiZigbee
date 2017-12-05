@@ -29,14 +29,20 @@ int main(void) {
 
 	memset(&address, 0, sizeof(address));
 	address.addr64_enabled = 1;
-	address.addr64[0] = 0x00;
-	address.addr64[1] = 0x13;
-	address.addr64[2] = 0xA2;
-	address.addr64[3] = 0x00;
-	address.addr64[4] = 0x40;
-	address.addr64[5] = 0x89;
-	address.addr64[6] = 0x16;
-	address.addr64[7] = 0x5F;
+
+	sscanf("000000000000FFFF", "%2x%2x%2x%2x%2x%2x%2x%2x", &address.addr64[0], &address.addr64[1], &address.addr64[2], &address.addr64[3],
+                                                               &address.addr64[4], &address.addr64[5], &address.addr64[6], &address.addr64[7]   );
+        /*
+        address.addr64[0] = 0x00;
+        address.addr64[1] = 0x13;
+        address.addr64[2] = 0xA2;
+        address.addr64[3] = 0x00;
+        address.addr64[4] = 0x40;
+        address.addr64[5] = 0x89;
+        address.addr64[6] = 0x16;
+        address.addr64[7] = 0x5F;
+        */
+
 	if ((ret = xbee_conNew(xbee, &con, "Data", &address)) != XBEE_ENONE) {
 		xbee_log(xbee, -1, "xbee_conNew() returned: %d (%s)", ret, xbee_errorToStr(ret));
 		return ret;
