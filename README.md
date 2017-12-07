@@ -29,8 +29,8 @@ should review this file and then run the following command:
 
 	
 After the build process has completed, you should find suitable files in **./lib**.<br />
-E.g: for a Unix-like OS you can expect to find **.so** and **.a** files
-     for Windows you can expect to find a **.dll** file<br /><br />
+E.g: for a Unix-like OS you can expect to find **.so** and **.a** files<br />
+        for Windows you can expect to find a **.dll** file<br /><br />
 
 It is highly recommended that you don't modify any of the build system.
 
