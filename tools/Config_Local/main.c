@@ -4,8 +4,10 @@
 #include <unistd.h>
 #include <xbee.h>
 
-/* this is the callback function...
-   it will be executed once for each packet that is recieved on an associated connection */
+/* 
+ * this is the callback function...
+ * it will be executed once for each packet that is recieved on an associated connection 
+ */
 void myCB(struct xbee *xbee, struct xbee_con *con, struct xbee_pkt **pkt, void **data) {
 	if ((*pkt)->dataLen == 0) {
 		printf("too short...\n");
@@ -33,24 +35,38 @@ int main(void) {
 		return ret;
 	}
 
-	/* configure a callback for the connection
-	   this function is called every time a packet for this connection is recieved */
+	/* 
+	 * configure a callback for the connection
+	 * this function is called every time a packet for this connection is recieved 
+	 */
+
 	if ((ret = xbee_conCallbackSet(con, myCB, NULL)) != XBEE_ENONE) {
 		xbee_log(xbee, -1, "xbee_conCallbackSet() returned: %d", ret);
 		return ret;
 	}
 
-	/* send the AT command 'NI' (request the Node Identifier)
-	   when the response is recieved, the packet will be directed to the callback function */
+	/* 
+	 * send the AT command 'NI' (request the Node Identifier)
+	 * when the response is recieved, the packet will be directed to the callback function 
+	 */
+
 	ret = xbee_conTx(con, &txRet, "NI");
-	/* print out the return value
-	   if this is non-zero, then check 'enum xbee_errors' in xbee.h for its meaning
-	   alternatively look at the xbee_errorToStr() function */
+
+	/* 
+	 * print out the return value
+	 * if this is non-zero, then check 'enum xbee_errors' in xbee.h for its meaning
+	 * alternatively look at the xbee_errorToStr() function 
+	 */
+
 	printf("tx: %d\n", ret);
 	if (ret) {
-		/* if ret was non-zero, then some error occured
-		   if ret == XBEE_ETX then it is possible that txRet is now -17 / XBEE_ETIMEOUT
-		   alternatively, txRet will contain the status code returned by the XBee */
+
+		/* 
+		 * if ret was non-zero, then some error occured
+		 * if ret == XBEE_ETX then it is possible that txRet is now -17 / XBEE_ETIMEOUT
+		 * alternatively, txRet will contain the status code returned by the XBee 
+		 */
+
 		printf("txRet: %d\n", txRet);
 	} else {
 		/* give the callback a chance to run */
