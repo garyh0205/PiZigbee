@@ -39,7 +39,6 @@ int main(void) {
 	 * configure a callback for the connection
 	 * this function is called every time a packet for this connection is recieved 
 	 */
-
 	if ((ret = xbee_conCallbackSet(con, myCB, NULL)) != XBEE_ENONE) {
 		xbee_log(xbee, -1, "xbee_conCallbackSet() returned: %d", ret);
 		return ret;
@@ -49,7 +48,6 @@ int main(void) {
 	 * send the AT command 'NI' (request the Node Identifier)
 	 * when the response is recieved, the packet will be directed to the callback function 
 	 */
-
 	ret = xbee_conTx(con, &txRet, "NI");
 
 	/* 
@@ -57,7 +55,6 @@ int main(void) {
 	 * if this is non-zero, then check 'enum xbee_errors' in xbee.h for its meaning
 	 * alternatively look at the xbee_errorToStr() function 
 	 */
-
 	printf("tx: %d\n", ret);
 	if (ret) {
 
@@ -66,7 +63,6 @@ int main(void) {
 		 * if ret == XBEE_ETX then it is possible that txRet is now -17 / XBEE_ETIMEOUT
 		 * alternatively, txRet will contain the status code returned by the XBee 
 		 */
-
 		printf("txRet: %d\n", txRet);
 	} else {
 		/* give the callback a chance to run */
