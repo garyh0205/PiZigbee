@@ -69,10 +69,10 @@ int main(void) {
 		return ret;
 	}
 
-	/* kick off the chain reaction! */
+	/* start the chain reaction! */
 	xbee_conTx(con, NULL, "Hello\r\n");
 
-	while(true) {
+	while(1) {
 		void *p;
 
 		if ((ret = xbee_conCallbackGet(con, (xbee_t_conCallback*)&p)) != XBEE_ENONE) {
