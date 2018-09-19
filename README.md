@@ -1,4 +1,8 @@
 # PiZigbee
+
+##==================================================================<br /><br />The Development of this repository move to OpenISDM/Lbeacon-zigbee<br /><br />https://github.com/OpenISDM/Lbeacon-zigbee<br /><br />===================================================================
+
+
 ## Zigbee on Respberry Pi
 
 > The library we use fork from Attie's repository "libxbee3". 
